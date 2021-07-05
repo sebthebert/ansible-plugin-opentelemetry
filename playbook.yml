@@ -1,0 +1,32 @@
+---
+- name: Play A
+  hosts: all
+  gather_facts: yes
+  #serial: 100%
+
+  tasks:
+    - name: Task A1
+      wait_for:
+        timeout: 4
+    - name: Task A2
+      wait_for:
+        timeout: 1
+    - name: Task A3
+      wait_for:
+        timeout: 1
+
+- name: Play B
+  hosts: all
+  gather_facts: no
+  #serial: 1
+
+  tasks:
+    - name: Task B1
+      wait_for:
+        timeout: 3
+    - name: Task B2
+      wait_for:
+        timeout: 2
+    - name: Task B3
+      wait_for:
+        timeout: 3

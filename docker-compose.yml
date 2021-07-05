@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+
+    ansible:
+        image: ghcr.io/sebthebert/ansible-opentelemetry-demo:0.2.0
+        environment:
+            - ANSIBLE_CONFIG=/demo/ansible.cfg
+            - ANSIBLE_INVENTORY=/demo/inventory.ini
+            - ANSIBLE_OT_JAEGER_HOST=jaeger
+        command: tail -F /dev/null
+
+    jaeger:
+        image: jaegertracing/all-in-one
+        ports:
+            - 127.0.0.1:16686:16686
